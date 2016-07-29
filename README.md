@@ -24,11 +24,11 @@ Spread 和 binpack 也是有一定区别的。spread 策略用最少运行中的
 </pre>
 所有的节点做相同的操作。最后在 Swarm 上运行如下命令即可以来管理整个 Cluster。如例：
 <pre>
-	$ swarm manage -H tcp://<swarm_ip:swarm_port> file:///tmp/my_cluster
+	$ swarm manage -H tcp://swarm_ip:swarm_port file:///tmp/my_cluster
 </pre>
 第三种策略是静态 IP 列表策略。直接在 Swarm 上运行如下命令即可
 <pre>
-	$ swarm manage -H <swarm_ip:swarm_port> <node_ip1:2375>,<node_ip2:2375>
+	$ swarm manage -H swarm_ip:swarm_port node_ip1:2375,node_ip2:2375
 </pre>
 第四种策略，我把它称之为匹配 IP 化静态文件描述策略。它其实是第二种策略的升级版。只需要描述清楚 Swarm 节点的 IP 范围，就可以直接管理该 Cluster。 其它策略包括 etcd、consul、zookeeper,均是依赖第三方工具来实现。我把它归为一类。他们的具体使用也比较简单，请参考 https://docs.Docker.com/Swarm/discovery/
 用户同样可以自定义自己的发现策略。您只需要实现以下接口即可：
